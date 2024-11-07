@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Page with Like & Comment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .controls button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .counts {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .comments-section {
+            width: 50%;
+            margin: 20px auto;
+        }
+        .comments-section h2 {
+            text-align: center;
+        }
+        .comments-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .comments-section button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #0040ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .comments-section button:hover {
+            background-color: #0056b3;
+        }
+        .comment-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .comment-list li {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Page title -->
+    <h1>Image Page with Like & Comment Section</h1>
+
+    <!-- Image -->
+    <div class="image-container">
+        <img src="jpg_44-2.jpg" alt="Sample Image" id="image" width="500">
+    </div>
+
+    <!-- Like button and counts -->
+    <div class="controls">
+        <button onclick="increaseLike()">Like 👍</button>
+    </div>
+
+    <div class="counts">
+        <p>Likes: <span id="likeCount">0</span></p>
+    </div>
+
+    <!-- Comment Section -->
+    <div class="comments-section">
+        <h2>Write Your Comment</h2>
+        <input type="text" id="commentInput" placeholder="Write a comment...">
+        <button onclick="addComment()">Submit Comment</button>
+
+        <ul class="comment-list" id="commentList">
+            <!-- Comments will appear here -->
+        </ul>
+    </div>
+
+    <script>
+        
+        let likeCount = 0;
+
+        
+        function increaseLike() {
+            likeCount++;
+            document.getElementById('likeCount').innerText = likeCount;
+        }
+
+        
+        function addComment() {
+            
+            let comment = document.getElementById('commentInput').value;
+
+            if(comment.trim() !== "") {
+                
+                let commentItem = document.createElement('li');
+                commentItem.innerText = comment;
+
+                
+                document.getElementById('commentList').appendChild(commentItem);
+
+               
+                document.getElementById('commentInput').value = "";
+            } else {
+                alert("Please enter a comment.");
+            }
+        }
+    </script>
+
+</body>
+</html>
